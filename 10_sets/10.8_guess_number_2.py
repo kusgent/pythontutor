@@ -8,10 +8,11 @@ while True:
     if s == 'HELP':
         break
     l = {int(i) for i in s.split()}
-    if len(l) <= len(likely_values) / 2:
+    l &= likely_values
+    if len(likely_values) - len(l) >= len(likely_values) / 2:
         print('NO')
         likely_values -= l
-    elif len(l) > len(likely_values) / 2:
+    else:
         print('YES')
         likely_values &= l
 
